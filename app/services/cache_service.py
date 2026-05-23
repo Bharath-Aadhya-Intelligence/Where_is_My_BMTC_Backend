@@ -4,7 +4,7 @@ import functools
 import logging
 from typing import Any, Callable
 
-from app.core.redis import redis_manager
+from app.core.redis_client import redis_manager
 
 logger = logging.getLogger("app.cache")
 

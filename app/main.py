@@ -6,7 +6,7 @@ from fastapi import FastAPI
 
 from app.core.config import get_settings
 from app.core.database import mongodb
-from app.core.redis import redis_manager
+from app.core.redis_client import redis_manager
 from app.core.response import api_response
 from app.middleware.cors import setup_cors
 from app.middleware.error_handler import register_exception_handlers
@@ -77,14 +77,19 @@ def create_app() -> FastAPI:
 
     @app.get("/health")
     async def health_check():
+        """Render health check path — must return 2xx when the service is up."""
+        mongo_ok = mongodb.db is not None
+        status = "healthy" if mongo_ok else "degraded"
         return api_response(
             data={
-                "status": "healthy",
-                "mongodb": mongodb.db is not None,
+                "status": status,
+                "environment": settings.ENVIRONMENT,
+                "mongodb": mongo_ok,
                 "redis": redis_manager.available,
                 "simulation": simulation_engine.running,
             },
             message="Where is My BMTC API is fully functional",
+            status_code=200 if mongo_ok else 503,
         )
 
     return app

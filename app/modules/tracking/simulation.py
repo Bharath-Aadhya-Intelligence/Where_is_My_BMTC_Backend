@@ -7,7 +7,7 @@ from typing import Any
 
 from app.core.config import get_settings
 from app.core.database import get_database
-from app.core.redis import redis_manager
+from app.core.redis_client import redis_manager
 from app.services.cache_service import CacheService, cache_service
 from app.websocket.manager import ws_manager
 

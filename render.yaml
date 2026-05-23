@@ -1,0 +1,37 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Deploy: connect this repo in Render Dashboard → New → Blueprint
+# Or set these values manually when creating a Web Service (Python 3).
+
+services:
+  - type: web
+    name: where-is-my-bmtc-api
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: ./build.sh
+    startCommand: ./start.sh
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.2"
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: API_PREFIX
+        value: /api
+      - key: REDIS_ENABLED
+        value: "false"
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "60"
+      - key: MONGODB_DB
+        value: bmtc
+      # Set in Render Dashboard (secret):
+      - key: MONGODB_URI
+        sync: false
+      # Optional — Render Redis add-on internal URL:
+      - key: REDIS_URL
+        sync: false

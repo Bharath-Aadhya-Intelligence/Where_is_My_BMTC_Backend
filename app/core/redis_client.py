@@ -1,5 +1,6 @@
 """Redis connection manager with graceful fallback when unavailable."""
 
+import importlib
 import json
 import logging
 from typing import Any
@@ -27,16 +28,16 @@ class RedisManager:
             return
 
         try:
-            import redis.asyncio as redis
+            aioredis = importlib.import_module("redis.asyncio")
         except ImportError:
             logger.warning(
-                "Redis package not installed. Run: python3 -m pip install 'redis[hiredis]>=5.0.0' "
-                "(or use ./run.sh which installs from requirements.txt)"
+                "Redis package not installed. Run: ./setup.sh "
+                "or: python3 -m pip install 'redis[hiredis]>=5.0.0'"
             )
             return
 
         try:
-            self.client = redis.from_url(
+            self.client = aioredis.from_url(
                 settings.REDIS_URL,
                 encoding="utf-8",
                 decode_responses=True,
@@ -63,7 +64,7 @@ class RedisManager:
         try:
             return await self.client.get(key)
         except Exception as e:
-            logger.warning(f"Redis GET failed for {key}: {e}")
+            logger.warning("Redis GET failed for %s: %s", key, e)
             return None
 
     async def get_json(self, key: str) -> Any | None:
@@ -82,7 +83,7 @@ class RedisManager:
             await self.client.set(key, value, ex=ex)
             return True
         except Exception as e:
-            logger.warning(f"Redis SET failed for {key}: {e}")
+            logger.warning("Redis SET failed for %s: %s", key, e)
             return False
 
     async def set_json(self, key: str, value: Any, ex: int | None = None) -> bool:
@@ -95,7 +96,7 @@ class RedisManager:
             await self.client.delete(key)
             return True
         except Exception as e:
-            logger.warning(f"Redis DELETE failed for {key}: {e}")
+            logger.warning("Redis DELETE failed for %s: %s", key, e)
             return False
 
     async def publish(self, channel: str, message: str) -> bool:
@@ -105,7 +106,7 @@ class RedisManager:
             await self.client.publish(channel, message)
             return True
         except Exception as e:
-            logger.warning(f"Redis PUBLISH failed for {channel}: {e}")
+            logger.warning("Redis PUBLISH failed for %s: %s", channel, e)
             return False
 
     async def zincrby(self, key: str, amount: float, member: str) -> bool:
@@ -115,7 +116,7 @@ class RedisManager:
             await self.client.zincrby(key, amount, member)
             return True
         except Exception as e:
-            logger.warning(f"Redis ZINCRBY failed: {e}")
+            logger.warning("Redis ZINCRBY failed: %s", e)
             return False
 
     async def zrevrange(self, key: str, start: int, end: int) -> list[str]:
@@ -124,7 +125,7 @@ class RedisManager:
         try:
             return await self.client.zrevrange(key, start, end, withscores=False)
         except Exception as e:
-            logger.warning(f"Redis ZREVRANGE failed: {e}")
+            logger.warning("Redis ZREVRANGE failed: %s", e)
             return []
 
 
