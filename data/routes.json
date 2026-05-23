@@ -1,0 +1,45 @@
+[
+  {
+    "route_id": "R001",
+    "stops": [
+      "Majestic",
+      "Hebbal",
+      "Marathahalli",
+      "Whitefield"
+    ],
+    "frequency_mins": 15,
+    "operating_hours": "05:00-23:00"
+  },
+  {
+    "route_id": "R002",
+    "stops": [
+      "Majestic",
+      "Domlur",
+      "Kundalahalli",
+      "Kadugodi"
+    ],
+    "frequency_mins": 20,
+    "operating_hours": "06:00-22:30"
+  },
+  {
+    "route_id": "R003",
+    "stops": [
+      "Sarjapur",
+      "HSR Layout",
+      "Koramangala",
+      "Brigade Road"
+    ],
+    "frequency_mins": 12,
+    "operating_hours": "05:30-22:00"
+  },
+  {
+    "route_id": "R004",
+    "stops": [
+      "Kempegowda International Airport",
+      "Hebbal",
+      "Majestic"
+    ],
+    "frequency_mins": 30,
+    "operating_hours": "00:00-23:59"
+  }
+]

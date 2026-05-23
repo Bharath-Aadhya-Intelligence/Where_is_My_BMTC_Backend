@@ -1,0 +1,26 @@
+[
+  {
+    "bus_number": "500D",
+    "source": "Majestic",
+    "destination": "Whitefield",
+    "route_id": "R001"
+  },
+  {
+    "bus_number": "335E",
+    "source": "Majestic",
+    "destination": "Kadugodi",
+    "route_id": "R002"
+  },
+  {
+    "bus_number": "G3",
+    "source": "Sarjapur",
+    "destination": "Brigade Road",
+    "route_id": "R003"
+  },
+  {
+    "bus_number": "KIA-9",
+    "source": "Kempegowda International Airport",
+    "destination": "Majestic",
+    "route_id": "R004"
+  }
+]

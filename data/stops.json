@@ -1,0 +1,86 @@
+[
+  {
+    "stop_name": "Majestic",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.572, 12.976]
+    }
+  },
+  {
+    "stop_name": "Hebbal",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.592, 13.035]
+    }
+  },
+  {
+    "stop_name": "Marathahalli",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.698, 12.956]
+    }
+  },
+  {
+    "stop_name": "Whitefield",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.749, 12.969]
+    }
+  },
+  {
+    "stop_name": "Domlur",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.638, 12.961]
+    }
+  },
+  {
+    "stop_name": "Kundalahalli",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.712, 12.967]
+    }
+  },
+  {
+    "stop_name": "Kadugodi",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.761, 12.998]
+    }
+  },
+  {
+    "stop_name": "Sarjapur",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.784, 12.859]
+    }
+  },
+  {
+    "stop_name": "HSR Layout",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.638, 12.912]
+    }
+  },
+  {
+    "stop_name": "Koramangala",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.624, 12.935]
+    }
+  },
+  {
+    "stop_name": "Brigade Road",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.607, 12.974]
+    }
+  },
+  {
+    "stop_name": "Kempegowda International Airport",
+    "location": {
+      "type": "Point",
+      "coordinates": [77.706, 13.198]
+    }
+  }
+]
